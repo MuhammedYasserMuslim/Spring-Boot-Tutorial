@@ -1,14 +1,17 @@
 package org.example;
 
+import java.util.List;
+
 public class Person {
 
     private Long id;
     private String name;
     private int age;
 
-    public void printName(String name){
-        System.out.println("Person name is "+name);
-    }
+    private Department department;
+
+    List<String> phones;
+
 
     public Long getId() {
         return id;
@@ -34,12 +37,30 @@ public class Person {
         this.age = age;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public List<String> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<String> phones) {
+        this.phones = phones;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
+                ", department=" + department +
+                ", phones=" + phones +
                 '}';
     }
 }
