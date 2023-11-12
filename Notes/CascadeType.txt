@@ -1,0 +1,78 @@
+ public class Man {
+
+        @OneToOne(cascade = CascadeType.PERSIST)
+        @JoinColumn(name = "Wife_id")
+        private Woman woman;
+      }
+
+PERSIST 
+         :when save new Parent(man) with new chiled(woman) we must use it , he will save chiled(woman) first after that save            Parent(man) .  
+
+{
+    "name": "Mahmoud salah",
+    "age": 22,
+    "woman": {
+        "name": "salwa",
+        "salary": 1200.0,
+        "age": 22
+    },
+    "salary": 1200.0
+}
+-----------------------------------------------------------------------------------------------------------------------------
+        @OneToOne(cascade = CascadeType.MERGE)
+        @JoinColumn(name = "Wife_id")
+        private Woman woman;
+
+MERGE 
+       :used when update chiled(woman) we must use it ,he will update chiled(woman) first after that update Parent(man);
+{
+    "id": 17,
+    "name": "Mahmoud saied",
+    "age": 30,
+    "woman": {
+        "id": 4,
+        "name": "walaa",
+        "age": 25,
+        "salary": 1500.0
+    },
+    "salary": 1200.0
+}
+-----------------------------------------------------------------------------------------------------------------------------
+       @OneToOne(mappedBy = "woman",cascade = CascadeType.REMOVE)
+       @JsonIgnore
+       private Man man;
+
+REMOVE  
+        :used when i want when delete chiled(woman) delete Parent(man) with the forienkey.
+
+{
+     "id": 4,
+     "name": "walaa",                      when i remove this 
+     "age": 25,
+     "salary": 1500.0
+}
+
+{
+      "id": 17,
+      "name": "Mahmoud saied",
+      "age": 30,
+      "woman": {
+          "id": 4,                      he removed this
+          "name": "walaa",                   
+          "age": 25,
+          "salary": 1500.0
+      },
+      "salary": 1200.0
+}
+-----------------------------------------------------------------------------------------------------------------------------
+       @OneToOne(mappedBy = "woman",cascade = CascadeType.REFRESH)
+       @JoinColumn(name = "Wife_id")
+       private Woman woman;
+
+REFRESH  
+         :when i retreve Parent(man) from database he refresh chiled(woman).
+
+
+
+
+

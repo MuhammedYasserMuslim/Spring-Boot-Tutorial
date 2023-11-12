@@ -1,0 +1,2 @@
+    @Formula("(SELECT count(*) FROM cas.man inner join children   on man.id=children.father_id    where man.id =id)")
+    private Long numOfChildren;

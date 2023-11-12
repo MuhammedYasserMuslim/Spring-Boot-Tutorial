@@ -1,19 +1,23 @@
 package org.example;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
+        ObjectMapper mapper = new ObjectMapper();
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+        Person person = mapper.readValue("{ \"id\" :\"5\",\n" +
+                " \"name\" :\"muhammed\",\n" +
+                " \"age\" : 23,\n" +
+                "\"phones\":[\n" +
+                "    \"01014129303\",\"01550449403\"\n" +
+                "]}" , Person.class);
 
-        Person person1 = (Person) context.getBean("per");
-        System.out.println(person1.toString());
+        person.toString();
 
-        Department department = (Department) context.getBean("dep");
-        System.out.println(department.toString());
 
 
     }

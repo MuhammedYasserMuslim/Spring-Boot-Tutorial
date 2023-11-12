@@ -1,1 +1,15 @@
 http : use to communication between client and server
+
+ORM : used to convert between OOP and Relational database
+
+jpa: used to connect java Application to database (JDBC )
+
+hibernate :framework to ORM
+
+jakson : used to Map between java object to json object
+
+dispather servlet : used to map any request with controller
+
+services : buisness logic
+
+ 
